@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Capacity Required table</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">JustGetIt</a>
+    </nav>
+    <div class="container text-center">
+        <h1>Capacity Required Table</h1>
+    </div>
+    <table class="table table-hover table-striped table-bordered" style="width: 97%; margin-left: 20px">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Order No.</th>
+            <th scope="col">Loaded To Line Capacity</th>
+            <th scope="col">Order Quantity</th>
+            <th scope="col">style SMV</th>
+            <th scope="col">Capacity Required (mins.)</th>
+            <th scope="col">Capacity Available Per Day</th>
+            <th scope="col">Capacity Required (Days)</th>
+          </tr>
+        </thead>
+    {% for a in allcpr %}
+        <tbody>
+          <tr>
+            <td>{{a.orderno}}</td>
+            <td>{{a.ltlc}}</td>
+            <td>{{a.orderqty}}</td>
+            <td>{{a.smv}}</td>
+            <td>{{a.crm}}</td>
+            <td>{{a.capd}}</td>
+            <td>{{a.crd}}</td>
+          </tr>
+        </tbody>
+    {% endfor %}
+      </table>
+
+    
+</body>
+</html>

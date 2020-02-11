@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Order table</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">JustGetIt</a>
+    </nav>
+    <div class="container text-center">
+        <h1>Order Table</h1>
+    </div>
+    <table class="table table-hover table-striped table-bordered" style="width: 97%; margin-left: 20px">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Order No.</th>
+            <th scope="col">Style No.</th>
+            <th scope="col">Order Quantity</th>
+            <th scope="col">Order Confirmation Date</th>
+            <th scope="col">Plan to Cut Date</th>
+            <th scope="col">Order Completion Date</th>
+            <th scope="col">Lead Time For Factory</th>
+            <th scope="col">Lead Time For Buyer</th>
+
+          </tr>
+        </thead>
+    {% for a in allorder %}
+        <tbody>
+          <tr>
+            <td>{{a.orderno}}</td>
+            <td>{{a.styleno}}</td>
+            <td>{{a.orderqty}}</td>
+            <td>{{a.ordercd}}</td>
+            <td>{{a.plancd}}</td>
+            <td>{{a.ocd}}</td>
+            <td>{{a.ltf}}</td>
+            <td>{{a.ltb}}</td>
+          </tr>
+        </tbody>
+    {% endfor %}
+      </table>
+
+    
+</body>
+</html>
