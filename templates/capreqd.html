@@ -4,11 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
     <title>Capacity Required</title>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">JustGetIt</a>
+        <a class="navbar-brand" href="/">JustGetIt</a>
     </nav>
     <div class="container text-center">
         <h1>CAPACITY REQUIRED</h1>
@@ -23,9 +27,14 @@
         </div>
 
         <div class="form-group row">
-            <label  class="col-sm-2 col-form-label">Loaded To Line Capacity</label>
+            <label  class="col-sm-2 col-form-label">Loaded To Line No.</label>
             <div class="col-sm-10">
-              <input type="text" name="ltlc" id="ltlc">
+                <select name="ltlc" id="ltlc" onchange="calccapd(this.value)">
+                    <option>----</option>
+                    {% for a in macfill %}
+                    <option value="{{a.mac}}" id="a1">{{a.lineno}}</option>
+                    {% endfor %}
+                  </select>
             </div>
         </div>
 
@@ -53,7 +62,9 @@
         <div class="form-group row">
             <label  class="col-sm-2 col-form-label">Capacity Available per Day</label>
             <div class="col-sm-10">
-              <input type="text" name="capd" id="capd">
+                
+              <input type="text" name="capd" id="capd"  style="background: #D3D3D3; " readonly>
+                
             </div>
         </div>
 
@@ -71,10 +82,13 @@
             <input type="reset" class="btn btn-primary">
         </div>
         
+       
+        
 
     </form>
-    <script language="javascript">
 
+    <script language="javascript">
+       
         function calccrm()
         {
             var orderqty = parseFloat(document.getElementById("orderqty").value);
@@ -92,7 +106,28 @@
             crd.value = crm/capd;
     
         }
-     
+        function calccapd()
+        {
+            var ltlc = document.getElementById("ltlc").value;
+            var capd = document.getElementById("capd");
+            capd.value = ltlc;
+            var a1 = document.getElementById("a1");
+            var x = document.getElementById("ltlc");
+            //alert(x.options[x.selectedIndex].text);
+            var y = x.options[x.selectedIndex].text;
+           // alert(y);
+           a1.value = y;
+            x.value = y;
+            document.getElementById("a1").innerHTML = y; 
+            
+            //a1.setAttribute("value","("+ y +")");
+           // var e = document.getElementById("a1");
+            //var result = e.options[e.selectedIndex].textContent;
+            //alert(result); //United State
+    
+        }
+        
+       
 
     </script>
 </body>

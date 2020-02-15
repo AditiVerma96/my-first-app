@@ -47,7 +47,8 @@ def capreqd(request):
         s2=Cpr(orderno=orderno, ltlc=ltlc, orderqty=orderqty, smv=smv, crm=crm, capd=capd, crd=crd)
         s2.save()
         return render(request,'capreqd.html')
-    return render(request,'capreqd.html')
+    macfill = Avc.objects.all()
+    return render(request,'capreqd.html',{'macfill': macfill})
 
 def ordtable(request):
     allorder = Ord.objects.all()
