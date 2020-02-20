@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+    
+    <title>Select Order No</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="/">JustGetIt</a>
+    </nav>
+    <div class="container text-center">
+        <h1>Select Order No</h1>
+  <form method='GET' action='exp' style="margin-left:20px; width: 97%">
+    <div class="form-group row">
+      <label  class="col-sm-2 col-form-label">Order No.</label>
+      <div class="col-sm-10">
+          <select name="orderno" id="orderno">
+              <option id="a2">----</option>
+              
+              {% for a in allorder %}
+              <option value="{{a.orderno}}" id="a1">{{a.orderno}}</option>
+              {% endfor %}
+            </select>
+      </div>
+  </div>
+    <button name="button" id="button" value="button" class="btn btn-primary" >Click Me</button>
+  </form>
+</body>
+</html>

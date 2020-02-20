@@ -4,10 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <script
-  src="https://code.jquery.com/jquery-3.4.1.min.js"
-  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-  crossorigin="anonymous"></script>
     <title>Capacity Required</title>
 </head>
 <body>
@@ -20,23 +16,31 @@
     <form action="capreqd" method="post" style="margin-left:20px; width: 97%">
         {% csrf_token %}
         <div class="form-group row">
-            <label class="col-sm-2 col-form-label">Order No.</label>
+            <label  class="col-sm-2 col-form-label">Order No.</label>
             <div class="col-sm-10">
-              <input type="text"  name="orderno" id="orderno">
+                <select name="orderno" id="orderno">
+                    <option id="b2">----</option>
+                    
+                    {% for b in allorder %}
+                    <option value="{{b.orderno}}" id="b1">{{b.orderno}}</option>
+                    {% endfor %}
+                  </select>
             </div>
         </div>
 
         <div class="form-group row">
             <label  class="col-sm-2 col-form-label">Loaded To Line No.</label>
             <div class="col-sm-10">
-                <select name="ltlc" id="ltlc" onchange="calccapd(this.value)">
-                    <option>----</option>
+                <select name="ltlc1" id="ltlc1" onchange="calccapd(this.value)">
+                    <option id="a2">----</option>
+                    
                     {% for a in macfill %}
                     <option value="{{a.mac}}" id="a1">{{a.lineno}}</option>
                     {% endfor %}
                   </select>
             </div>
         </div>
+        <input type="hidden" name = "ltlc" id="ltlc">
 
         <div class="form-group row">
             <label  class="col-sm-2 col-form-label">Order Quantity</label>
@@ -62,9 +66,9 @@
         <div class="form-group row">
             <label  class="col-sm-2 col-form-label">Capacity Available per Day</label>
             <div class="col-sm-10">
-                
+
               <input type="text" name="capd" id="capd"  style="background: #D3D3D3; " readonly>
-                
+        
             </div>
         </div>
 
@@ -108,17 +112,28 @@
         }
         function calccapd()
         {
-            var ltlc = document.getElementById("ltlc").value;
+            var ltlc1 = document.getElementById("ltlc1").value;
             var capd = document.getElementById("capd");
-            capd.value = ltlc;
-            var a1 = document.getElementById("a1");
-            var x = document.getElementById("ltlc");
+            capd.value = ltlc1;
+            //var a1 = document.getElementById("a1");
+            var x = document.getElementById("ltlc1");
             //alert(x.options[x.selectedIndex].text);
-            var y = x.options[x.selectedIndex].text;
+           var y = x.options[x.selectedIndex].text;
+           var ltlc = document.getElementById("ltlc");
+           ltlc.value=y;
            // alert(y);
-           a1.value = y;
-            x.value = y;
-            document.getElementById("a1").innerHTML = y; 
+           //a1.value = y;
+           // x.value = y;
+            //document.getElementById("a1").innerHTML = y; 
+           // x.options[x.selectedIndex].innerHTML = y;
+            //var z = document.getElementById("ltlc").options.length;
+           
+
+           // for (var i = 1; i <= z; i++) {
+               // document.getElementById("a1").innerHTML = y;
+            //
+              //  }
+           // alert(z);
             
             //a1.setAttribute("value","("+ y +")");
            // var e = document.getElementById("a1");

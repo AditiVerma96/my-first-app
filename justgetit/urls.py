@@ -24,5 +24,12 @@ urlpatterns = [
     path('ordtable/', include('loadplan.urls')),
     path('avctable/', include('loadplan.urls')),
     path('cprtable/', include('loadplan.urls')),
+    path('material/', include('loadplan.urls')),
+    path('mattable/', include('loadplan.urls')),
+    path('loadsugg/', include('loadplan.urls')),
+    path('exp/', include('loadplan.urls')),
+    path('lg/', include('loadplan.urls')),
+    path('linetable/', include('loadplan.urls')),
+    path('exptable/', include('loadplan.urls')),
     path('admin/', admin.site.urls),
 ]

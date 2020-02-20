@@ -30,4 +30,14 @@ class Cpr(models.Model):
     capd = models.FloatField()
     crd = models.FloatField()
 
+class Mat(models.Model):
+    orderno = models.IntegerField()
+    fin = models.CharField(max_length=2)
+    threads = models.CharField(max_length=2)
+    sewtrim = models.CharField(max_length=2)
+    fintrim = models.CharField(max_length=2)
+    packtrim = models.CharField(max_length=2)
 
+class Lio(models.Model):
+    orderno = models.IntegerField()
+    ltlc = models.IntegerField()
